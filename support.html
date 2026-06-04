@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Support — Mindleaf</title>
+  <meta name="description" content="Get help with Mindleaf. Contact our support team or find answers to common questions."/>
+  <link rel="icon" type="image/png" href="assets/favicon_96x96.png"/>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <link rel="apple-touch-icon" href="assets/apple_touch_icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --sage:#6A9E70;
+      --sage-light:#EBF2EC;
+      --sage-strong:#3E7245;
+      --sage-dark:#2D5C35;
+      --sage-mid-alpha:rgba(106,158,112,0.12);
+      --bg:#F8F9F6;
+      --bg-white:#FFFFFF;
+      --text:#1A1A18;
+      --text-muted:#6B6B68;
+      --text-hint:#ABABAB;
+      --border:#DCE8DC;
+      --dk-bg:#0C0F0C;
+      --dk-white:rgba(245,247,244,0.9);
+      --dk-muted:rgba(245,247,244,0.38);
+      --dk-border:rgba(255,255,255,0.07);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Figtree',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(248,249,246,0.92);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:0.5px solid var(--border);
+      padding:0 40px;
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo img{height:48px;width:auto}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn-store-sm{
+      display:inline-flex;align-items:center;gap:7px;
+      font-family:'Figtree',sans-serif;font-size:12px;font-weight:500;
+      padding:8px 16px;border-radius:9px;text-decoration:none;
+      transition:all .2s;cursor:pointer;border:none;
+    }
+    .btn-apple-sm{background:var(--text);color:#fff}
+    .btn-apple-sm:hover{background:#2a2a28}
+    .btn-play-sm{background:var(--bg-white);color:var(--text);border:0.5px solid var(--border)}
+    .btn-play-sm:hover{background:var(--sage-light)}
+    .btn-store-sm svg{width:14px;height:14px;flex-shrink:0}
+
+    .page-wrap{
+      max-width:720px;
+      margin:0 auto;
+      padding:110px 40px 80px;
+    }
+    .page-eyebrow{
+      font-family:'Syne',sans-serif;
+      font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--sage);font-weight:600;margin-bottom:16px;
+    }
+    .page-title{
+      font-family:'DM Serif Display',serif;
+      font-size:clamp(32px,5vw,48px);
+      line-height:1.15;color:var(--text);
+      margin-bottom:8px;
+    }
+    .page-sub{
+      font-size:16px;font-weight:300;
+      color:var(--text-muted);
+      line-height:1.6;
+      margin-bottom:52px;
+      padding-bottom:32px;
+      border-bottom:1px solid var(--border);
+    }
+
+    /* ── Contact card ── */
+    .contact-card{
+      background:var(--bg-white);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:32px;
+      margin-bottom:16px;
+      display:flex;
+      align-items:flex-start;
+      gap:20px;
+      transition:border-color .2s, box-shadow .2s;
+    }
+    .contact-card:hover{
+      border-color:var(--sage);
+      box-shadow:0 4px 20px rgba(106,158,112,0.08);
+    }
+    .contact-icon{
+      width:44px;height:44px;border-radius:12px;
+      background:var(--sage-light);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;
+      font-size:20px;
+    }
+    .contact-text strong{
+      display:block;
+      font-size:15px;font-weight:600;
+      color:var(--text);margin-bottom:4px;
+    }
+    .contact-text p{
+      font-size:13px;font-weight:300;
+      color:var(--text-muted);
+      line-height:1.5;
+      margin-bottom:12px;
+    }
+    .contact-link{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13px;font-weight:500;
+      color:var(--sage-strong);
+      text-decoration:none;
+      transition:color .2s;
+    }
+    .contact-link:hover{color:var(--sage-dark)}
+
+    /* ── FAQ ── */
+    .faq-title{
+      font-family:'Syne',sans-serif;
+      font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--sage);font-weight:600;
+      margin:52px 0 20px;
+    }
+
+    .faq-item{
+      border-bottom:1px solid var(--border);
+      padding:20px 0;
+    }
+    .faq-item:last-child{border-bottom:none}
+
+    .faq-q{
+      font-size:15px;font-weight:500;
+      color:var(--text);
+      margin-bottom:8px;
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:16px;
+      list-style:none;
+    }
+    .faq-q::after{
+      content:'↓';
+      font-size:14px;
+      color:var(--text-hint);
+      transition:transform .2s;
+      flex-shrink:0;
+    }
+    details[open] .faq-q::after{transform:rotate(180deg)}
+
+    .faq-a{
+      font-size:14px;font-weight:300;
+      color:var(--text-muted);
+      line-height:1.7;
+      padding-top:4px;
+    }
+    .faq-a a{color:var(--sage-strong);font-weight:500;text-decoration:none}
+    .faq-a a:hover{text-decoration:underline}
+
+    footer{
+      background:var(--dk-bg);
+      padding:36px 40px;
+      display:flex;align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;gap:16px;
+      margin-top:80px;
+    }
+    .footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .footer-logo img{height:36px;width:auto;opacity:.6}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-size:12px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:rgba(255,255,255,0.5)}
+    .footer-links a.active{color:rgba(255,255,255,0.5)}
+    .footer-copy{font-size:11px;color:rgba(255,255,255,0.12)}
+
+    @media(max-width:768px){
+      nav{padding:0 20px}
+      .page-wrap{padding:96px 24px 60px}
+      .contact-card{flex-direction:column;gap:14px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:28px 20px}
+      .footer-links{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="assets/nobg_mindleaf_logo.png" alt="Mindleaf logo"/>
+  </a>
+  <div class="nav-actions">
+    <a href="#" class="btn-store-sm btn-apple-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span>App Store</span>
+    </a>
+    <a href="#" class="btn-store-sm btn-play-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.95 1.48-.45l11 8.5c.38.3.38.85 0 1.15l-11 8.5c-.48.5-1.48.38-1.48-.7zM5 7.14V16.86L12.97 12 5 7.14z"/></svg>
+      <span>Google Play</span>
+    </a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <p class="page-eyebrow">Help</p>
+  <h1 class="page-title">Support</h1>
+  <p class="page-sub">
+    We're here to help. Reach out anytime — we typically respond within 24 hours.
+  </p>
+
+  <!-- Contact cards -->
+  <div class="contact-card">
+    <div class="contact-icon">✉️</div>
+    <div class="contact-text">
+      <strong>Email support</strong>
+      <p>For account issues, billing questions, subscription help, or anything else — email us directly.</p>
+      <a href="mailto:support@getmindleaf.com" class="contact-link">
+        support@getmindleaf.com →
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div class="contact-icon">💬</div>
+    <div class="contact-text">
+      <strong>General enquiries</strong>
+      <p>Press, partnerships, feedback, or anything else.</p>
+      <a href="mailto:hello@getmindleaf.com" class="contact-link">
+        hello@getmindleaf.com →
+      </a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <p class="faq-title">Common questions</p>
+
+  <details class="faq-item">
+    <summary class="faq-q">How do I cancel my Pro subscription?</summary>
+    <p class="faq-a">
+      Open the Settings app on your iPhone → tap your name → Subscriptions →
+      find Mindleaf → tap Cancel Subscription. Your Pro access continues until
+      the end of the current billing period.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">I was charged but the app still shows Free.</summary>
+    <p class="faq-a">
+      Open the app → go to the upgrade screen → tap Restore purchases.
+      If that doesn't work, email us at
+      <a href="mailto:support@getmindleaf.com">support@getmindleaf.com</a>
+      with your Apple ID email and we'll sort it out.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">How do I delete my account and data?</summary>
+    <p class="faq-a">
+      In the app: tap the person icon → Settings → Delete account.
+      This permanently deletes your account, all session history, and
+      cancels any active subscription. It cannot be undone.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">I'm not receiving the verification email.</summary>
+    <p class="faq-a">
+      Check your spam or junk folder — the email comes from
+      noreply@getmindleaf.com. If it's not there, tap Resend on the
+      verification screen. Codes expire after 10 minutes. If you're
+      still having trouble, email us at
+      <a href="mailto:support@getmindleaf.com">support@getmindleaf.com</a>.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">Can I use Mindleaf without an account?</summary>
+    <p class="faq-a">
+      Yes. Mindleaf works fully as a guest — no account required.
+      Your session history is saved on your device. If you reinstall
+      the app, your guest history will be lost. Create a free account
+      to keep your history safe across reinstalls.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">Does Mindleaf work offline?</summary>
+    <p class="faq-a">
+      The breathing sessions work offline. The ambient soundscapes
+      require an internet connection to stream. Account sync and
+      session history saving also require a connection.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">How do I request a refund?</summary>
+    <p class="faq-a">
+      Refunds are handled by Apple. Go to
+      <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">
+        reportaproblem.apple.com
+      </a>
+      → sign in → find the Mindleaf charge → Request a refund.
+      Apple typically processes refund requests within a few days.
+    </p>
+  </details>
+
+  <details class="faq-item">
+    <summary class="faq-q">Where can I read the Privacy Policy and Terms?</summary>
+    <p class="faq-a">
+      <a href="privacy.html">Privacy Policy</a> ·
+      <a href="terms.html">Terms &amp; Conditions</a>
+    </p>
+  </details>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">
+    <img src="assets/nobg_whitetext_mindleaf_logo.png" alt="Mindleaf"/>
+  </a>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="support.html">Contact</a>
+  </div>
+  <span class="footer-copy">© 2026 Mindleaf</span>
+</footer>
+
+</body>
+</html>

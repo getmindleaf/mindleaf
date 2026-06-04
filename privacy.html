@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Privacy Policy — Mindleaf</title>
+  <meta name="description" content="Mindleaf privacy policy. We collect minimal data and never sell it."/>
+  <link rel="icon" type="image/png" href="assets/favicon_96x96.png"/>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <link rel="apple-touch-icon" href="assets/apple_touch_icon.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;500;600;700&family=Figtree:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --sage:#6A9E70;
+      --sage-light:#EBF2EC;
+      --sage-strong:#3E7245;
+      --sage-dark:#2D5C35;
+      --sage-mid-alpha:rgba(106,158,112,0.12);
+      --bg:#F8F9F6;
+      --bg-white:#FFFFFF;
+      --text:#1A1A18;
+      --text-muted:#6B6B68;
+      --text-hint:#ABABAB;
+      --border:#DCE8DC;
+      --dk-bg:#0C0F0C;
+      --dk-white:rgba(245,247,244,0.9);
+      --dk-muted:rgba(245,247,244,0.38);
+      --dk-border:rgba(255,255,255,0.07);
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'Figtree',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+
+    /* ── NAV (matches index.html exactly) ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(248,249,246,0.92);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+      border-bottom:0.5px solid var(--border);
+      padding:0 40px;
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo img{height:48px;width:auto}
+    .nav-actions{display:flex;gap:10px;align-items:center}
+    .btn-store-sm{
+      display:inline-flex;align-items:center;gap:7px;
+      font-family:'Figtree',sans-serif;font-size:12px;font-weight:500;
+      padding:8px 16px;border-radius:9px;text-decoration:none;
+      transition:all .2s;cursor:pointer;border:none;
+    }
+    .btn-apple-sm{background:var(--text);color:#fff}
+    .btn-apple-sm:hover{background:#2a2a28}
+    .btn-play-sm{background:var(--bg-white);color:var(--text);border:0.5px solid var(--border)}
+    .btn-play-sm:hover{background:var(--sage-light)}
+    .btn-store-sm svg{width:14px;height:14px;flex-shrink:0}
+
+    /* ── PAGE ── */
+    .page-wrap{
+      max-width:720px;
+      margin:0 auto;
+      padding:110px 40px 80px;
+    }
+
+    .page-eyebrow{
+      font-family:'Syne',sans-serif;
+      font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--sage);font-weight:600;margin-bottom:16px;
+    }
+
+    .page-title{
+      font-family:'DM Serif Display',serif;
+      font-size:clamp(32px,5vw,48px);
+      line-height:1.15;color:var(--text);
+      margin-bottom:8px;
+    }
+
+    .page-meta{
+      font-size:13px;color:var(--text-hint);
+      margin-bottom:52px;
+      padding-bottom:32px;
+      border-bottom:1px solid var(--border);
+    }
+
+    /* ── Sections ── */
+    .section{margin-bottom:36px}
+
+    .section-title{
+      font-family:'Figtree',sans-serif;
+      font-size:15px;font-weight:600;
+      color:var(--text);
+      margin-bottom:10px;
+    }
+
+    .section-body{
+      font-size:14px;
+      font-weight:300;
+      color:var(--text-muted);
+      line-height:1.75;
+    }
+
+    .section-body p{margin-bottom:10px}
+    .section-body p:last-child{margin-bottom:0}
+
+    /* inline list items */
+    .section-body ul{
+      margin:8px 0 8px 20px;
+      display:flex;flex-direction:column;gap:4px;
+    }
+    .section-body li{
+      font-size:14px;
+      font-weight:300;
+      color:var(--text-muted);
+      line-height:1.6;
+    }
+
+    /* ── Contact highlight ── */
+    .contact-box{
+      background:var(--bg-white);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:20px 24px;
+      font-size:14px;
+      color:var(--text-muted);
+      margin-top:8px;
+    }
+    .contact-box a{
+      color:var(--sage-strong);
+      text-decoration:none;
+      font-weight:500;
+    }
+    .contact-box a:hover{text-decoration:underline}
+
+    /* ── Footer (matches index.html exactly) ── */
+    footer{
+      background:var(--dk-bg);
+      padding:36px 40px;
+      display:flex;align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;gap:16px;
+      margin-top:80px;
+    }
+    .footer-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+    .footer-logo img{height:36px;width:auto;opacity:.6}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-size:12px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:rgba(255,255,255,0.5)}
+    .footer-links a.active{color:rgba(255,255,255,0.5)}
+    .footer-copy{font-size:11px;color:rgba(255,255,255,0.12)}
+
+    @media(max-width:768px){
+      nav{padding:0 20px}
+      .page-wrap{padding:96px 24px 60px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:28px 20px}
+      .footer-links{justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="assets/nobg_mindleaf_logo.png" alt="Mindleaf logo"/>
+  </a>
+  <div class="nav-actions">
+    <a href="#" class="btn-store-sm btn-apple-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span>App Store</span>
+    </a>
+    <a href="#" class="btn-store-sm btn-play-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.95 1.48-.45l11 8.5c.38.3.38.85 0 1.15l-11 8.5c-.48.5-1.48.38-1.48-.7zM5 7.14V16.86L12.97 12 5 7.14z"/></svg>
+      <span>Google Play</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ── Content ── -->
+<div class="page-wrap">
+  <p class="page-eyebrow">Legal</p>
+  <h1 class="page-title">Privacy Policy</h1>
+  <p class="page-meta">Last updated: May 2026</p>
+
+  <div class="section">
+    <h2 class="section-title">Overview</h2>
+    <div class="section-body">
+      <p>Mindleaf is a stress-relief breathing app. We are committed to protecting your privacy. This policy explains what data we collect, how we use it, and your rights.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">What we collect</h2>
+    <div class="section-body">
+      <p>When you use Mindleaf without an account (as a guest), we store a random device identifier on your device to track your session history locally. This identifier is not linked to your identity.</p>
+      <p>When you create an account, we collect:</p>
+      <ul>
+        <li>Your email address (for authentication)</li>
+        <li>Your session history (which moods you selected, session duration, timestamps)</li>
+        <li>Your subscription status (free or Pro)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">What we do not collect</h2>
+    <div class="section-body">
+      <ul>
+        <li>We do not collect your name, phone number, or physical address</li>
+        <li>We do not track your location</li>
+        <li>We do not use third-party analytics or advertising SDKs</li>
+        <li>We do not sell, share, or rent your data to anyone</li>
+        <li>We do not use cookies or web tracking</li>
+        <li>We do not access your contacts, photos, or other device data</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">How we use your data</h2>
+    <div class="section-body">
+      <p>Your session data is used solely to:</p>
+      <ul>
+        <li>Show your session history and reset counts</li>
+        <li>Provide weekly Reflect insights (Pro feature)</li>
+        <li>Sync your data across devices when signed in</li>
+      </ul>
+      <p>Your email is used solely for authentication and password resets. We will never send marketing emails without your explicit consent.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Data storage &amp; security</h2>
+    <div class="section-body">
+      <p>Your data is stored securely on Supabase (hosted on AWS). All data is protected by Row Level Security — you can only access your own data. All connections use HTTPS encryption.</p>
+      <p>Sound files are stored in a private cloud storage bucket and accessed via time-limited signed URLs.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Guest data</h2>
+    <div class="section-body">
+      <p>If you use Mindleaf without creating an account, your session history is linked to a random device token stored on your device. This data cannot be used to identify you. If you later create an account, your guest sessions are migrated to your account.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Data retention</h2>
+    <div class="section-body">
+      <p>Your data is retained for as long as your account exists. When you delete your account, all associated data (sessions, plan status, email) is permanently and immediately deleted from our servers. This action cannot be undone.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Your rights</h2>
+    <div class="section-body">
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access your data (visible in the app's History and Account screens)</li>
+        <li>Delete your data (Settings → Delete account)</li>
+        <li>Export your data (contact us)</li>
+        <li>Withdraw consent at any time by deleting your account</li>
+      </ul>
+      <p>If you are in the EU/UK, you have additional rights under GDPR including the right to rectification and the right to lodge a complaint with a supervisory authority.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Children</h2>
+    <div class="section-body">
+      <p>Mindleaf is not directed at children under 13. We do not knowingly collect data from children under 13. If you believe a child has provided us with personal data, please contact us and we will delete it promptly.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Third-party services</h2>
+    <div class="section-body">
+      <p>We use the following third-party services:</p>
+      <ul>
+        <li>Supabase — authentication and database hosting</li>
+        <li>Google Sign In — optional OAuth authentication</li>
+        <li>Apple Sign In — optional OAuth authentication</li>
+      </ul>
+      <p>We do not use any advertising networks, analytics platforms, or data brokers.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Changes to this policy</h2>
+    <div class="section-body">
+      <p>We may update this policy from time to time. If we make significant changes, we will notify you through the app. Continued use of Mindleaf after changes constitutes acceptance of the updated policy.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Contact</h2>
+    <div class="section-body">
+      <p>If you have questions about this policy or your data:</p>
+    </div>
+    <div class="contact-box">
+      Email us at <a href="mailto:hello@getmindleaf.com">hello@getmindleaf.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<footer>
+  <a href="/" class="footer-logo">
+    <img src="assets/nobg_whitetext_mindleaf_logo.png" alt="Mindleaf"/>
+  </a>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="support.html">Contact</a>
+  </div>
+  <span class="footer-copy">© 2026 Mindleaf</span>
+</footer>
+
+</body>
+</html>

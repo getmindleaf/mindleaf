@@ -328,10 +328,11 @@ nav{
 .pricing-section .section-title{color:rgba(245,247,244,0.9);text-align:center;margin:0 auto 16px}
 .pricing-section .section-title em{color:rgba(245,247,244,0.28)}
 .pricing-section .section-sub{color:rgba(245,247,244,0.38);text-align:center;margin:0 auto 60px;max-width:480px}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start;margin-top:0}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch;margin-top:0}
 .pricing-card{
   background:#111A12;border:0.5px solid rgba(255,255,255,0.07);
   border-radius:20px;padding:32px 28px;position:relative;transition:transform .2s,border-color .2s;
+  display:flex;flex-direction:column;
 }
 .pricing-card:hover{transform:translateY(-4px);border-color:rgba(106,158,112,0.3)}
 .pricing-card.featured{
@@ -353,7 +354,7 @@ nav{
 .pricing-check{color:var(--sage);font-weight:700;flex-shrink:0;margin-top:1px}
 .pricing-cross{color:rgba(245,247,244,0.2);font-weight:400;flex-shrink:0;margin-top:1px}
 .pricing-cta{
-  display:block;width:100%;border-radius:100px;padding:14px;
+  display:block;width:100%;border-radius:100px;padding:14px;margin-top:auto;
   font-family:'Figtree',sans-serif;font-size:14px;font-weight:500;
   text-align:center;text-decoration:none;margin-top:28px;transition:all .2s;cursor:pointer;border:none;
 }
@@ -813,9 +814,9 @@ footer{
 
   </a>
   <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Use</a>
-    <a href="#">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="support.html">Contact</a>
   </div>
   <span class="footer-copy">© 2026 Mindleaf</span>
 </footer>
