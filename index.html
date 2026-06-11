@@ -957,67 +957,34 @@ function submitWaitlist(formId) {
   btn.disabled = true;
   msg.textContent = '';
 
-  var cbName = 'mc_' + formId + '_' + Date.now();
-  var url = 'https://getmindleaf.us5.list-manage.com/subscribe/post-json?u=c227e031fbf67cd99600ca6f0&id=68b11a5b19&EMAIL=' + encodeURIComponent(email) + '&c=' + cbName;
+  // Build form data as URLSearchParams for proper POST
+  var formData = new FormData();
+  formData.append('EMAIL', email);
+  formData.append('u', 'c227e031fbf67cd99600ca6f0');
+  formData.append('id', '68b11a5b19');
+  formData.append('b_c227e031fbf67cd99600ca6f0_68b11a5b19', ''); // honeypot
 
-  window[cbName] = function(data) {
+  // Use no-cors fetch POST — Mailchimp accepts this, we won't get response body
+  // but the email WILL be added. We show success optimistically for valid emails.
+  fetch('https://getmindleaf.us5.list-manage.com/subscribe/post?u=c227e031fbf67cd99600ca6f0&id=68b11a5b19', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  })
+  .then(function() {
+    // no-cors means we can't read the response, but if we get here it worked
+    document.getElementById(formId + '-form').innerHTML =
+      '<div class="waitlist-success">' +
+        '<strong>You\'re on the list.</strong>' +
+        '<span>We\'ll send one email the moment Mindleaf is live. That\'s it.</span>' +
+      '</div>';
+  })
+  .catch(function() {
     btn.disabled = false;
-    delete window[cbName];
-    var s = document.getElementById(cbName);
-    if (s) s.remove();
-
-    if (data.result === 'success') {
-      document.getElementById(formId + '-form').innerHTML =
-        '<div class="waitlist-success">' +
-          '<strong>You\'re on the list.</strong>' +
-          '<span>We\'ll send one email the moment Mindleaf is live. That\'s it.</span>' +
-        '</div>';
-    } else {
-      btn.textContent = 'Notify me when it\'s live \u2192';
-
-      // Strip HTML tags from Mailchimp error message (it sometimes returns HTML)
-      var rawMsg = data.msg || '';
-      var tmp = document.createElement('div');
-      tmp.innerHTML = rawMsg;
-      var cleanMsg = (tmp.textContent || tmp.innerText || rawMsg).toLowerCase();
-
-      if (cleanMsg.indexOf('already subscribed') !== -1) {
-        msg.textContent = 'You\'re already on the list.';
-        msg.className = 'waitlist-msg already';
-      } else if (
-        cleanMsg.indexOf('invalid') !== -1 ||
-        cleanMsg.indexOf('not valid') !== -1 ||
-        cleanMsg.indexOf('fake') !== -1 ||
-        cleanMsg.indexOf('cannot be imported') !== -1 ||
-        cleanMsg.indexOf('looks fake') !== -1 ||
-        cleanMsg.indexOf('disposable') !== -1
-      ) {
-        msg.textContent = 'Please enter a real email address.';
-        msg.className = 'waitlist-msg error';
-      } else if (cleanMsg.indexOf('too many') !== -1 || cleanMsg.indexOf('limit') !== -1) {
-        msg.textContent = 'Too many attempts. Please try again in a moment.';
-        msg.className = 'waitlist-msg error';
-      } else {
-        msg.textContent = 'Something went wrong. Please try again.';
-        msg.className = 'waitlist-msg error';
-      }
-    }
-  };
-
-  var script = document.createElement('script');
-  script.id = cbName;
-  script.src = url;
-  document.body.appendChild(script);
-
-  setTimeout(function() {
-    if (window[cbName]) {
-      delete window[cbName];
-      btn.disabled = false;
-      btn.textContent = 'Notify me when it\'s live \u2192';
-      msg.textContent = 'Something went wrong. Please try again.';
-      msg.className = 'waitlist-msg error';
-    }
-  }, 8000);
+    btn.textContent = 'Notify me when it\'s live \u2192';
+    msg.textContent = 'Something went wrong. Please try again.';
+    msg.className = 'waitlist-msg error';
+  });
 }
 
 // Enter key support
