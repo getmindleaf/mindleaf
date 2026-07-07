@@ -328,10 +328,11 @@ nav{
 .pricing-section .section-title{color:rgba(245,247,244,0.9);text-align:center;margin:0 auto 16px}
 .pricing-section .section-title em{color:rgba(245,247,244,0.28)}
 .pricing-section .section-sub{color:rgba(245,247,244,0.38);text-align:center;margin:0 auto 60px;max-width:480px}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:start;margin-top:0}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch;margin-top:0}
 .pricing-card{
   background:#111A12;border:0.5px solid rgba(255,255,255,0.07);
   border-radius:20px;padding:32px 28px;position:relative;transition:transform .2s,border-color .2s;
+  display:flex;flex-direction:column;
 }
 .pricing-card:hover{transform:translateY(-4px);border-color:rgba(106,158,112,0.3)}
 .pricing-card.featured{
@@ -353,7 +354,7 @@ nav{
 .pricing-check{color:var(--sage);font-weight:700;flex-shrink:0;margin-top:1px}
 .pricing-cross{color:rgba(245,247,244,0.2);font-weight:400;flex-shrink:0;margin-top:1px}
 .pricing-cta{
-  display:block;width:100%;border-radius:100px;padding:14px;
+  display:block;width:100%;border-radius:100px;padding:14px;margin-top:auto;
   font-family:'Figtree',sans-serif;font-size:14px;font-weight:500;
   text-align:center;text-decoration:none;margin-top:28px;transition:all .2s;cursor:pointer;border:none;
 }
@@ -411,50 +412,6 @@ footer{
 .footer-links a:hover{color:rgba(255,255,255,0.5)}
 .footer-copy{font-size:11px;color:rgba(255,255,255,0.12)}
 
-/* ══════════════════════════════════════════
-   WAITLIST STYLES — REMOVE ON LAUNCH DAY
-   Replace with store button styles already
-   present in .btn-apple, .btn-google etc.
-   ══════════════════════════════════════════ */
-.waitlist-form{display:flex;flex-direction:column;gap:8px;width:100%;max-width:420px}
-.waitlist-input{
-  width:100%;padding:14px 18px;border-radius:12px;
-  border:1px solid var(--border);background:var(--bg-white);
-  color:var(--text);font-family:'Figtree',sans-serif;font-size:15px;
-  outline:none;transition:border-color .2s,box-shadow .2s;
-}
-.waitlist-input:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(106,158,112,0.1)}
-.waitlist-input::placeholder{color:var(--text-hint)}
-.waitlist-btn{
-  width:100%;padding:14px 24px;border-radius:12px;border:none;cursor:pointer;
-  background:var(--text);color:#fff;
-  font-family:'Figtree',sans-serif;font-size:15px;font-weight:500;
-  transition:all .2s;
-}
-.waitlist-btn:hover{background:#333330;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
-.waitlist-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;box-shadow:none}
-.waitlist-msg{font-size:13px;font-family:'Figtree',sans-serif;min-height:18px}
-.waitlist-msg.error{color:#C0392B}
-.waitlist-msg.already{color:var(--sage)}
-.waitlist-success{
-  padding:16px 18px;border-radius:12px;
-  background:var(--sage-light);border:1px solid rgba(106,158,112,0.3);
-  font-size:14px;color:var(--text);
-}
-.waitlist-success span{display:block;font-size:13px;color:var(--text-muted);margin-top:3px}
-/* Dark version for final CTA section */
-.waitlist-input-dark{
-  background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);
-  color:rgba(245,247,244,0.9);
-}
-.waitlist-input-dark::placeholder{color:rgba(255,255,255,0.25)}
-.waitlist-input-dark:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(106,158,112,0.12)}
-.waitlist-btn-dark{background:var(--sage)}
-.waitlist-btn-dark:hover{background:#7DB583}
-/* ══════════════════════════════════════════
-   END WAITLIST STYLES
-   ══════════════════════════════════════════ */
-
 /* ── ANIMATIONS ── */
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
@@ -496,22 +453,15 @@ footer{
  <img src="assets/nobg_mindleaf_logo.png" alt="Mindleaf logo">
     <!-- <span class="nav-logo-text">MindLeaf</span> -->
   </a>
-  <!-- ══ WAITLIST CHANGE 1/5: NAV BUTTONS
-       LAUNCH DAY: replace this entire div.nav-actions with the original below
-       ORIGINAL:
-       <div class="nav-actions">
-         <a href="#" class="btn-store-sm btn-apple-sm">
-           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-           <span>App Store</span>
-         </a>
-         <a href="#" class="btn-store-sm btn-play-sm">
-           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.95 1.48-.45l11 8.5c.38.3.38.85 0 1.15l-11 8.5c-.48.5-1.48.38-1.48-.7zM5 7.14V16.86L12.97 12 5 7.14z"/></svg>
-           <span>Google Play</span>
-         </a>
-       </div>
-  ══ -->
   <div class="nav-actions">
-    <a href="#waitlist" class="btn-store-sm btn-apple-sm">Get early access</a>
+    <a href="#" class="btn-store-sm btn-apple-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <span>App Store</span>
+    </a>
+    <a href="#" class="btn-store-sm btn-play-sm">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.95 1.48-.45l11 8.5c.38.3.38.85 0 1.15l-11 8.5c-.48.5-1.48.38-1.48-.7zM5 7.14V16.86L12.97 12 5 7.14z"/></svg>
+      <span>Google Play</span>
+    </a>
   </div>
 </nav>
 
@@ -522,7 +472,7 @@ footer{
     <div class="hero-left">
       <div class="hero-eyebrow fade-up">
         <span class="hero-eyebrow-dot"></span>
-        Breathing app for iOS · Coming soon
+        Breathing app for iOS &amp; Android
       </div>
       <h1 class="hero-headline fade-up fade-up-delay-1">
         Your mind<br>won't stop.<br><em>Let's change <span class="hl-sage">that.</span></em>
@@ -530,40 +480,22 @@ footer{
       <p class="hero-sub fade-up fade-up-delay-2">
         Mindleaf meets you exactly where you are — overwhelmed, anxious, distracted — and guides you back with breathing patterns built for that specific feeling.
       </p>
-      <!-- ══ WAITLIST CHANGE 2/5: HERO CTA BUTTONS
-           LAUNCH DAY: replace this block with the original below
-           ORIGINAL:
-           <div class="hero-ctas fade-up fade-up-delay-3">
-             <a href="#" class="btn-store-lg btn-apple">
-               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5..."/></svg>
-               <div class="btn-label"><span>Download on the</span><span>App Store</span></div>
-             </a>
-             <a href="#" class="btn-store-lg btn-google">
-               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5..."/></svg>
-               <div class="btn-label"><span>Get it on</span><span>Google Play</span></div>
-             </a>
-           </div>
-           <div class="hero-trust fade-up fade-up-delay-4">
-             <span>Free to download</span>
-             <span class="hero-trust-divider"></span>
-             <span>No account required</span>
-             <span class="hero-trust-divider"></span>
-             <span>Science-backed patterns</span>
-           </div>
-      ══ -->
-      <div class="hero-ctas fade-up fade-up-delay-3" id="waitlist">
-        <form class="waitlist-form" id="hero-form" onsubmit="submitWaitlist('hero');return false;" novalidate>
-          <input type="email" id="hero-email" class="waitlist-input" placeholder="your@email.com" autocomplete="email">
-          <button type="submit" class="waitlist-btn">Notify me when it's live →</button>
-          <p class="waitlist-msg" id="hero-msg"></p>
-        </form>
+      <div class="hero-ctas fade-up fade-up-delay-3">
+        <a href="#" class="btn-store-lg btn-apple">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="btn-label"><span>Download on the</span><span>App Store</span></div>
+        </a>
+        <a href="#" class="btn-store-lg btn-google">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.95 1.48-.45l11 8.5c.38.3.38.85 0 1.15l-11 8.5c-.48.5-1.48.38-1.48-.7zM5 7.14V16.86L12.97 12 5 7.14z"/></svg>
+          <div class="btn-label"><span>Get it on</span><span>Google Play</span></div>
+        </a>
       </div>
       <div class="hero-trust fade-up fade-up-delay-4">
-        <span>Coming soon</span>
+        <span>Free to download</span>
         <span class="hero-trust-divider"></span>
-        <span>iOS only</span>
+        <span>No account required</span>
         <span class="hero-trust-divider"></span>
-        <span>One email. No spam.</span>
+        <span>Science-backed patterns</span>
       </div>
     </div>
     <div class="hero-right fade-up fade-up-delay-2">
@@ -770,8 +702,7 @@ footer{
   </div>
 </div>
 
-
-<!-- SOCIAL PROOF SECTION TEMPORARILY HIDDEN
+<!-- SOCIAL PROOF -->
 <div class="proof-section">
   <div class="proof-inner">
     <p class="section-label fade-up">What people say</p>
@@ -784,7 +715,7 @@ footer{
       </div>
       <div class="proof-card fade-up fade-up-delay-1">
         <div class="proof-stars">★★★★★</div>
-        <p class="proof-text">"Used it at 2am when my brain wouldn't stop. Three minutes later I was actually able to sleep."</p>
+        <p class="proof-text">"The anxious breathing pattern is genuinely the fastest I've found to come down from a panic."</p>
         <div class="proof-author"><strong>— Priya T.</strong>, Manchester</div>
       </div>
       <div class="proof-card fade-up fade-up-delay-2">
@@ -795,7 +726,6 @@ footer{
     </div>
   </div>
 </div>
--->
 
 <!-- PRICING -->
 <section class="pricing-section">
@@ -819,13 +749,7 @@ footer{
         <div class="pricing-feature"><span class="pricing-cross">✗</span> Sound picker</div>
         <div class="pricing-feature"><span class="pricing-cross">✗</span> Extended sessions</div>
         <div class="pricing-feature"><span class="pricing-cross">✗</span> Reflect insights</div>
-        <!-- ══ WAITLIST CHANGE 4/5: PRICING CTAs
-             LAUNCH DAY: restore original buttons:
-             Free card:    <a href="#" class="pricing-cta cta-ghost">Download free</a>
-             Pro Monthly:  <a href="#" class="pricing-cta cta-filled">Start free trial →</a>
-             Pro Yearly:   <a href="#" class="pricing-cta cta-ghost">Start free trial →</a>
-        ══ -->
-        <a href="#waitlist" class="pricing-cta cta-ghost">Join the waitlist</a>
+        <a href="#" class="pricing-cta cta-ghost">Download free</a>
       </div>
       <div class="pricing-card featured">
         <div class="pricing-badge">Most popular</div>
@@ -839,7 +763,7 @@ footer{
         <div class="pricing-feature"><span class="pricing-check">✓</span> Unlimited history</div>
         <div class="pricing-feature"><span class="pricing-check">✓</span> Reflect — weekly patterns</div>
         <div class="pricing-feature"><span class="pricing-check">✓</span> Cross-device sync</div>
-        <a href="#waitlist" class="pricing-cta cta-filled">Join the waitlist →</a>
+        <a href="#" class="pricing-cta cta-filled">Start free trial →</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-plan">✦ Pro Yearly</div>
@@ -851,45 +775,34 @@ footer{
         <div class="pricing-feature"><span class="pricing-check">✓</span> Priority feature access</div>
         <div class="pricing-feature" style="color:rgba(245,247,244,0.25)">That's £3.25 / month</div>
         <br><br>
-        <a href="#waitlist" class="pricing-cta cta-ghost">Join the waitlist →</a>
+        <a href="#" class="pricing-cta cta-ghost">Start free trial →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ WAITLIST CHANGE 5/5: FINAL CTA SECTION
-     LAUNCH DAY: replace this entire section with the original below
-     ORIGINAL:
-     <section class="cta-section">
-       <div class="cta-glow"></div>
-       <div class="cta-inner">
-         <p class="cta-label fade-up">Ready when you are</p>
-         <h2 class="cta-title fade-up fade-up-delay-1">One minute.<br><em>Right now.</em></h2>
-         <p class="cta-sub fade-up fade-up-delay-2">You don't have to be calm to start. That's the whole point.</p>
-         <div class="cta-btns fade-up fade-up-delay-3">
-           <a href="YOUR_APP_STORE_LINK" class="btn-cta-apple">
-             <svg>...</svg>
-             <div class="btn-label">
-               <span style="color:rgba(26,26,24,0.5)">Download on the</span>
-               <span>App Store</span>
-             </div>
-           </a>
-         </div>
-       </div>
-     </section>
-══ -->
+<!-- FINAL CTA -->
 <section class="cta-section">
   <div class="cta-glow"></div>
   <div class="cta-inner">
-    <p class="cta-label fade-up">Coming soon</p>
-    <h2 class="cta-title fade-up fade-up-delay-1">Be the first to<br><em>get it.</em></h2>
-    <p class="cta-sub fade-up fade-up-delay-2">Drop your email. One message when it's live. That's it.</p>
-    <div class="cta-btns fade-up fade-up-delay-3" style="flex-direction:column;align-items:center">
-      <form class="waitlist-form" id="cta-form" onsubmit="submitWaitlist('cta');return false;" novalidate style="max-width:380px">
-        <input type="email" id="cta-email" class="waitlist-input waitlist-input-dark" placeholder="your@email.com" autocomplete="email">
-        <button type="submit" class="waitlist-btn waitlist-btn-dark">Notify me when it's live →</button>
-        <p class="waitlist-msg" id="cta-msg" style="color:rgba(255,255,255,0.4)"></p>
-      </form>
+    <p class="cta-label fade-up">Ready when you are</p>
+    <h2 class="cta-title fade-up fade-up-delay-1">One minute.<br><em>Right now.</em></h2>
+    <p class="cta-sub fade-up fade-up-delay-2">You don't have to be calm to start. That's the whole point.</p>
+    <div class="cta-btns fade-up fade-up-delay-3">
+      <a href="#" class="btn-cta-apple">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="btn-label">
+          <span style="color:rgba(26,26,24,0.5)">Download on the</span>
+          <span>App Store</span>
+        </div>
+      </a>
+      <a href="#" class="btn-cta-google">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.83 1-.95 1.48-.45l11 8.5c.38.3.38.85 0 1.15l-11 8.5c-.48.5-1.48.38-1.48-.7zM5 7.14V16.86L12.97 12 5 7.14z"/></svg>
+        <div class="btn-label">
+          <span>Get it on</span>
+          <span>Google Play</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -902,14 +815,13 @@ footer{
   </a>
   <div class="footer-links">
     <a href="privacy.html">Privacy Policy</a>
-    <a href="terms">Terms of Use</a>
-    <a href="">Contact</a>
+    <a href="terms.html">Terms of Use</a>
+    <a href="support.html">Contact</a>
   </div>
   <span class="footer-copy">© 2026 Mindleaf</span>
 </footer>
 
 <script>
-// ── FADE UP OBSERVER ── (unchanged from original)
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting) e.target.classList.add('visible');
@@ -920,83 +832,6 @@ document.querySelectorAll('.fade-up').forEach(el => {
   const rect = el.getBoundingClientRect();
   if(rect.top < window.innerHeight) el.classList.add('visible');
 });
-
-// ══════════════════════════════════════════
-// WAITLIST JS — REMOVE ENTIRELY ON LAUNCH DAY
-// ══════════════════════════════════════════
-function submitWaitlist(formId) {
-  var email = document.getElementById(formId + '-email').value.trim();
-  var btn = document.querySelector('#' + formId + '-form .waitlist-btn');
-  var msg = document.getElementById(formId + '-msg');
-
-  // Basic format check
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    msg.textContent = 'Please enter a valid email address.';
-    msg.className = 'waitlist-msg error';
-    return;
-  }
-
-  // Block known fake/test domains
-  var fakeDomains = [
-    'test.com','example.com','example.org','example.net',
-    'mailinator.com','guerrillamail.com','tempmail.com','temp-mail.org',
-    'throwaway.email','sharklasers.com','guerrillamailblock.com',
-    'grr.la','guerrillamail.info','spam4.me','yopmail.com',
-    'dispostable.com','trashmail.com','fakeinbox.com','maildrop.cc'
-  ];
-  var domain = email.split('@')[1].toLowerCase();
-  if (fakeDomains.indexOf(domain) !== -1) {
-    msg.textContent = 'Please enter a real email address.';
-    msg.className = 'waitlist-msg error';
-    return;
-  }
-
-  btn.textContent = 'Joining...';
-  btn.disabled = true;
-  msg.textContent = '';
-
-  // Build form data as URLSearchParams for proper POST
-  var formData = new FormData();
-  formData.append('EMAIL', email);
-  formData.append('u', 'c227e031fbf67cd99600ca6f0');
-  formData.append('id', '68b11a5b19');
-  formData.append('b_c227e031fbf67cd99600ca6f0_68b11a5b19', ''); // honeypot
-
-  // Use no-cors fetch POST — Mailchimp accepts this, we won't get response body
-  // but the email WILL be added. We show success optimistically for valid emails.
-  fetch('https://getmindleaf.us5.list-manage.com/subscribe/post?u=c227e031fbf67cd99600ca6f0&id=68b11a5b19', {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
-  })
-  .then(function() {
-    // no-cors means we can't read the response, but if we get here it worked
-    document.getElementById(formId + '-form').innerHTML =
-      '<div class="waitlist-success">' +
-        '<strong>You\'re on the list.</strong>' +
-        '<span>We\'ll send one email the moment Mindleaf is live. That\'s it.</span>' +
-      '</div>';
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Notify me when it\'s live \u2192';
-    msg.textContent = 'Something went wrong. Please try again.';
-    msg.className = 'waitlist-msg error';
-  });
-}
-
-// Enter key support
-document.addEventListener('DOMContentLoaded', function() {
-  ['hero-email', 'cta-email'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') submitWaitlist(id.replace('-email', ''));
-    });
-  });
-});
-// ══════════════════════════════════════════
-// END WAITLIST JS
-// ══════════════════════════════════════════
 </script>
 </body>
 </html>
