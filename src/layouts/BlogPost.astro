@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+  body {
+    background: var(--bg);
+  }
+
+  main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-top: 64px;
+  }
+
+  .prose {
+    width: 720px;
+    max-width: calc(100% - 2em);
+    margin: 0 auto;
+    padding: 3em 1em;
+    color: var(--text);
+    font-family: 'Figtree', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .title {
+    margin-bottom: 2em;
+    padding: 2em 0 1em;
+    text-align: center;
+  }
+
+  .title h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    color: var(--text);
+    margin: 0 0 0.5em 0;
+  }
+
+  .date {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1em;
+  }
+
+  .hero-image {
+    width: 100%;
+  }
+
+  .hero-image img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+  }
+
+  .prose h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8em;
+    margin: 1.5em 0 0.5em;
+    color: var(--text);
+  }
+
+  .prose h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4em;
+    margin: 1.2em 0 0.4em;
+  }
+
+  .prose p {
+    margin-bottom: 1.5em;
+    color: var(--text-muted);
+  }
+
+  .prose ul, .prose ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+    color: var(--text-muted);
+  }
+
+  .prose li {
+    margin-bottom: 0.5em;
+  }
+
+  .prose strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<div class="prose">
+					<div class="title">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
